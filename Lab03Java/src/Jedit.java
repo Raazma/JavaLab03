@@ -21,14 +21,14 @@ public class Jedit
         try {
             java.io.PrintWriter writer = new java.io.PrintWriter(
                     new java.io.BufferedWriter(new java.io.FileWriter(fileName)));
-            while (ligne.length() == 0) {
-                ligne = reader.readLine();
+            //while (ligne != null)
+            ligne = reader.readLine();
+            while (!ligne.isEmpty())
+                {
+
                 writer.println(ligne);
-            }
-
-
-
-
+                    ligne = reader.readLine();
+                }
             writer.close();
 
         }
@@ -47,12 +47,11 @@ public class Jedit
 
         if(args.length > 0)
         {
-            if(args[0] == "-n")
+            if(args[0].equals("-n"))
                 WithNumber(args[1]);
-            else
+           else
                 WithoutNumber(args[0]);
-        }
-
+       }
 
 
 
