@@ -62,7 +62,7 @@ public class Jedit {
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         java.io.File file = new java.io.File(fileName);
         String line = new String();
-        
+
         if(file.exists()) {
             System.out.println("le fichier existe deja voulez vous l'ecraser O/Oui N/Non: ");
 
