@@ -13,16 +13,18 @@ public class Jedit {
           if(Verif(fileName)) {
               try {
                   java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(new java.io.FileWriter(fileName)));
-
                   ligne = reader.readLine();
+
                   while (!ligne.isEmpty()) {
                       writer.println(compteur + ": " + ligne);
                       ligne = reader.readLine();
                       compteur++;
                   }
                   writer.close();
-              } catch (java.io.IOException e) {
+              }
+              catch (java.io.IOException e) {
                   System.out.println("Erreur lors de la lectureS");
+                  System.exit(1);
               }
           }
    }
@@ -43,6 +45,7 @@ public class Jedit {
                 writer.close();
             } catch (java.io.IOException e) {
                 System.out.println("Erreur lors de la lectureS");
+                System.exit(1);
             }
         }
     }
@@ -64,12 +67,13 @@ public class Jedit {
         String line = new String();
 
         if(file.exists()) {
-            System.out.println("le fichier existe deja voulez vous l'ecraser O/Oui N/Non: ");
+            System.out.println("le fichier existe deja voulez vous l'écraser O(Oui) N(Non): ");
 
             try {
                 line = reader.readLine();
             } catch (java.io.IOException e) {
                 System.out.println(e);
+                System.exit(1);
             }
             if (line.equals("O") || line.equals("o")) {
                 file.delete();
