@@ -9,17 +9,21 @@ public class Jedit {
        int compteur = 1;
        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
        String ligne = new String();
+       String buffer = new String();
 
           if(Verif(fileName)) {
               try {
                   java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(new java.io.FileWriter(fileName)));
                   ligne = reader.readLine();
-
                   while (!ligne.isEmpty()) {
-                      writer.println(compteur + ": " + ligne);
+                      if (!buffer.isEmpty()) {
+                          writer.println(compteur + ": " + buffer);
+                      }
+                      buffer=ligne;
                       ligne = reader.readLine();
                       compteur++;
                   }
+                  writer.print(compteur + ": " + buffer);
                   writer.close();
               }
               catch (java.io.IOException e) {
@@ -33,16 +37,22 @@ public class Jedit {
 
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         String ligne = new String();
+        String buffer = new String();
 
         if(Verif(fileName)) {
             try {
                 java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(new java.io.FileWriter(fileName)));
                 ligne = reader.readLine();
                 while (!ligne.isEmpty()) {
-                    writer.println(ligne);
+                    if(!buffer.isEmpty()) {
+                        writer.println(buffer);
+                    }
+                    buffer = ligne;
                     ligne = reader.readLine();
                 }
+                writer.print(buffer);
                 writer.close();
+
             } catch (java.io.IOException e) {
                 System.out.println("Erreur lors de la lectureS");
                 System.exit(1);
