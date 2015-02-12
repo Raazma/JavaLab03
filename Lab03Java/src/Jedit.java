@@ -53,10 +53,10 @@ public class Jedit {
     public void editer( String args[] ) {
         if(args.length > 0 && args.length < 3)
         {
-            if(args[0].equals("-n"))
+            if(args[0].equals("-n") &&args.length == 2 )
                 WithNumber(args[1]);
            else
-            if(args.length == 1 )
+            if(args.length == 1 && !(args[0].equals("-n")))
                 WithoutNumber(args[0]);
        }
     }
