@@ -6,7 +6,7 @@ import java.io.Console;
 public class Jedit {
 
    private void WithNumber(String fileName) {
-       int compteur = 1;
+       int compteur = 0;
        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
        String ligne = new String();
        String buffer = new String();
@@ -23,7 +23,10 @@ public class Jedit {
                       ligne = reader.readLine();
                       compteur++;
                   }
-                  writer.print(compteur + ": " + buffer);
+                  if (!buffer.isEmpty())
+                  {
+                      writer.print(compteur + ": " + buffer);
+                  }
                   writer.close();
               }
               catch (java.io.IOException e) {
@@ -50,7 +53,10 @@ public class Jedit {
                     buffer = ligne;
                     ligne = reader.readLine();
                 }
+                if (!buffer.isEmpty())
+                {
                 writer.print(buffer);
+                }
                 writer.close();
 
             } catch (java.io.IOException e) {
@@ -66,7 +72,7 @@ public class Jedit {
             if(args[0].equals("-n") &&args.length == 2 )
                 WithNumber(args[1]);
            else
-            if(args.length == 1 && !(args[0].equals("-n")))
+            if(args.length == 1 )
                 WithoutNumber(args[0]);
        }
     }
